@@ -1,0 +1,61 @@
+{% load static %}
+
+{% for i in trend_episode_author  %}
+{% for j in i.trend_episode_author.all %}
+
+<div class="col-lg-4 col-12">
+    <div class="custom-block custom-block-full">
+        <div class="custom-block-image-wrap">
+            <a href="{% url 'detail-page' %}">
+                <img src="{{ j.img.url }}" class="custom-block-image img-fluid" alt="">
+            </a>
+        </div>
+
+        <div class="custom-block-info">
+            <h5 class="mb-2">
+                <a href="{% url 'detail-page' %}">
+                    {{ j.name }}
+                </a>
+            </h5>
+
+            <div class="profile-block d-flex">
+                <img src="{{ i.img.url }}" class="profile-block-image img-fluid" alt="">
+
+                <p>
+                    {{ i.name }}
+                    {% if i.verification %}
+                    <img src="{% static 'images/verified.png' %}" class="verified-image img-fluid" alt="">
+                    {% endif %}
+                    <strong>{{ i.badge_1 }}</strong></p>
+            </div>
+
+            <p class="mb-0">{{ j.text }}</p>
+
+            <div class="custom-block-bottom d-flex justify-content-between mt-3">
+                <a href="#" class="bi-headphones me-1">
+                    <span>{{ j.listen }}</span>
+                </a>
+
+                <a href="#" class="bi-heart me-1">
+                    <span>{{ j.like }}</span>
+                </a>
+
+                <a href="#" class="bi-chat me-1">
+                    <span>{{ j.comment }}</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="social-share d-flex flex-column ms-auto">
+            <a href="#" class="badge ms-auto">
+                <i class="bi-heart"></i>
+            </a>
+
+            <a href="#" class="badge ms-auto">
+                <i class="bi-bookmark"></i>
+            </a>
+        </div>
+    </div>
+</div>
+{% endfor %}
+{% endfor %}
